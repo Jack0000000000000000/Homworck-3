@@ -1,0 +1,114 @@
+/* Type selector for the body */
+body {
+    font-family: 'Arial', sans-serif; /* Updated font */
+    display: flex;
+    justify-content: space-around;
+    padding: 30px; /* Increased padding */
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+/* Class selector for the section */
+.section {
+    background-color: #ffffff;
+    border: 1px solid #d3d3d3;
+    padding: 20px; /* Increased padding */
+    width: 320px; /* Slightly wider */
+    border-radius: 8px; /* More rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: relative; /* For pseudo-element positioning */
+}
+
+/* ::before pseudo-selector for visual accent on sections */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #4682b4; /* Steel blue accent color */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Type selector for the h2 within the section (descendant selector) */
+.section h2 {
+    margin-top: 15px; /* Adjusted top margin */
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px; /* Added bottom margin */
+}
+
+/* Class selector for the task list */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Class selector for the task item */
+.task-item {
+    border-bottom: 1px solid #eee;
+    padding: 12px;
+    margin-bottom: 0; /* Removed bottom margin, using border-bottom instead */
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    position: relative; /* For pseudo-element positioning */
+}
+
+/* Target the last task item to remove the bottom border */
+.task-item:last-child {
+    border-bottom: none;
+}
+
+/* Attribute selector for the checkbox input */
+.task-item input[type="checkbox"] {
+    margin-right: 15px;
+    appearance: none; /* Remove default checkbox appearance */
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none; /* Remove focus outline */
+}
+
+/* ::before pseudo-selector for custom unchecked checkbox */
+.task-item input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: #5cb85c; /* Green color for checked state */
+    border-radius: 2px;
+    transition: width 0.15s ease-in-out, height 0.15s ease-in-out;
+}
+
+/* Style for when the checkbox is checked */
+.task-item input[type="checkbox"]:checked::before {
+    width: 10px;
+    height: 10px;
+}
+
+/* ::after pseudo-selector for a subtle visual cue on task items */
+.task-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+/* Style for the "Done" section task items */
+.section:nth-child(3) .task-item input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: #888;
+}
